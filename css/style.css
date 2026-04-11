@@ -1,0 +1,9 @@
+.nav-link-custom {
+    font-weight: 600;        /* bold */
+    color: #333;             /* dark grey */
+    text-decoration: none;   /* removes underline */
+}
+
+.nav-link-custom:hover {
+    color: #000;             /* pure black on hover */
+}
