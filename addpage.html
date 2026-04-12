@@ -41,26 +41,85 @@
 </header>
 <!-- Main contents and add button  -->
 <main class="flex-grow-1">
-    <div class="container text-center mb-4">
+
+    <div class="container mt-4">
+
+<!-- Title above entry box -->
+        <h2 class="text-center b-4" style="font-weight: bold;">Add Application</h2>
+
+<!-- Box holding all entry feilds for the application -->
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+
+                <div class="border p-4 rounded">
+
+<!-- Company offering a position -->
+                    <div class="mb-3">
+                        <label class="form-label">Company Name</label>
+                        <input id="company" type="text" class="form-control" placeholder="Co. or LLC">
+                    </div>
+
+<!-- Role or position applied for-->
+                    <div class="mb-3">
+                        <label class="form-label">Role / Position</label>
+                        <input id="role" type="text" class="form-control" placeholder="Ex. Intern, Full-Time, Part-Time">
+                    </div>
+
+<!-- Status of a Job application with drop down options -->
+                    <div class="mb-3">
+                        <label class="form-label">Stage of Process</label>
+                        <select id="status" class="form-control">
+                            <option>Applied</option>
+                            <option>Assessment</option>
+                            <option>Interview</option>
+                            <option>Offer</option>
+                            <option>Aceppted</option>
+                        </select>
+                    </div>
+
+<!-- Date modified -->
+                    <div class="mb-3">
+                        <label class="form-label">Last Updated</label>
+                        <input id="date" type="date" class="form-control">
+                    </div>
+
+                    
+<!-- Compensation of a job listing -->
+                    <div class="mb-3">
+                        <label class="form-label">Comp Offered</label>
+                        <input id="comp" type="text" class="form-control" placeholder="$ or Salary in K's">
+                    </div>
+
+<!-- Notes for a job application -->
+                    <div class="mb-3">
+                       <label class="form-label">Notes</label>
+                        <textarea id="notes" class="form-control" rows="3"placeholder="Type notes here"></textarea>
+                    </div>
+                    
+<!-- Save button to keep everything in all boxes-->
+                    <div class="text-center">
+                        <button id="save-btn" class="btn btn-success">Save Application</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
 
     </div>
 
-    <div class="container">
-        <div id="job-list" class="row"></div>
-    </div>
 </main>
     <script src="javascript\script.js"></script>
 
 <footer class="container-fluid border-top py-2 mt-5">
     <div class="row align-items-center">
 
-        <!-- LEFT -->
+<!-- Logo and Name -->
         <div class="col-4 d-flex align-items-center">
             <img src="images\RSE Logo.png" width="40" class="me-2">
             <small class="text-muted">Resume-EZ</small>
         </div>
 
-        <!-- CENTER -->
+<!-- Center text crediting myself and listing tools -->
         <div class="col-4 text-center">
             <small class="text-muted"> * Built by Ronan Christie * JS, CSS, Bootstrap * </small>
         </div>
