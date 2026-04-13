@@ -23,11 +23,13 @@ if (saveBtn) {
         } else {
             jobs = [];
         }
+//adds new job to a array 
         jobs.push(job);
         localStorage.setItem("jobs", JSON.stringify(jobs));
         alert("Application Saved");
     });
 }
+
 // Display table logic for the INDEX page
 var tableBody = document.getElementById("job-table-body");
 if (tableBody) {
@@ -36,8 +38,31 @@ if (tableBody) {
         jobs = JSON.parse(jobs);
     } else {
         jobs = [];
-    }
+    }  
+// Counters for each status type
+    var countRejected = 0;
+    var countApplied = 0;
+    var countAssessment = 0;
+    var countInterview = 0;
+    var countOffer = 0;
+    var countAccepted = 0;
+
     for (var i = 0; i < jobs.length; i++) {
+
+        // FIX ADDED: counter logic
+        if (jobs[i].status === "Applied") {
+            countApplied++; }
+        else if (jobs[i].status === "Assessment") {
+            countAssessment++; }
+        else if (jobs[i].status === "Interview") {
+            countInterview++; }
+        else if (jobs[i].status === "Offer") {
+            countOffer++; }
+        else if (jobs[i].status === "Accepted") {
+            countAccepted++; }
+        else if (jobs[i].status === "Rejected") {
+            countRejected++; }
+
         var row = document.createElement("tr");
 // Company in table fetched upper case initialized to first character 
         var company = document.createElement("td");
@@ -66,10 +91,10 @@ if (tableBody) {
             badge.style.backgroundColor = "blue";
         }
         else if (jobs[i].status === "Offer") {
-            badge.style.backgroundColor = "green";
+            badge.style.backgroundColor = "yellow";
         }
         else if (jobs[i].status === "Accepted") {
-            badge.style.backgroundColor = "purple";
+            badge.style.backgroundColor = "green";
         }
         else if (jobs[i].status === "Rejected") {
             badge.style.backgroundColor = "red";
@@ -91,6 +116,13 @@ if (tableBody) {
         row.appendChild(details);
         tableBody.appendChild(row);
     }
+    // FIX ADDED: actually display the counters
+    document.getElementById("count-applied").textContent = countApplied;
+    document.getElementById("count-assessment").textContent = countAssessment;
+    document.getElementById("count-interview").textContent = countInterview;
+    document.getElementById("count-offer").textContent = countOffer;
+    document.getElementById("count-accepted").textContent = countAccepted;
+    document.getElementById("count-rejected").textContent = countRejected;
 }
 // Details page logic 
 var detailsBody = document.getElementById("details-table-body");
@@ -129,12 +161,15 @@ if (detailsBody) {
             badge.style.backgroundColor = "blue";
         }
         else if (jobs[i].status === "Offer") {
-            badge.style.backgroundColor = "green";
+            badge.style.backgroundColor = "yellow";
         }
         else if (jobs[i].status === "Accepted") {
-            badge.style.backgroundColor = "purple";
+            badge.style.backgroundColor = "green";
         }
-
+        else if (jobs[i].status === "Rejected") {
+            badge.style.backgroundColor = "red";
+        }
+// Data for badge color fetched
         statusCell.appendChild(badge);
 // Date is fetched
         var date = document.createElement("td");
@@ -145,14 +180,20 @@ if (detailsBody) {
 // Notes are fetched for display
         var notes = document.createElement("td");
         notes.textContent = jobs[i].notes;
-// Appends new rows into the table 
+// Checks for empty notes and displays no notes
+        if (jobs[i].notes === "") {
+            notes.textContent = "No notes";
+        } else {
+            notes.textContent = jobs[i].notes;
+        }
+// Appends new rows data into the table 
         row.appendChild(company);
         row.appendChild(role);
         row.appendChild(statusCell);
         row.appendChild(date);
         row.appendChild(comp);
         row.appendChild(notes);
-
+//New row in a table created
         detailsBody.appendChild(row);
     }
 }
