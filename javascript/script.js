@@ -80,7 +80,10 @@ if (tableBody) {
         var button = document.createElement("button");
         button.textContent = "View";
         button.className = "btn btn-sm btn-primary";
-        details.appendChild(button);
+        button.addEventListener("click", function() {
+            localStorage.setItem("selectedJob", JSON.stringify(jobs[i]));
+            window.location.href = "details.html";});
+        details.appendChild(button); 
 // Creates a new appendage to table adding new applications
         row.appendChild(company);
         row.appendChild(role);
