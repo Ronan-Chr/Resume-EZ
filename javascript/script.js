@@ -49,7 +49,7 @@ if (tableBody) {
 
     for (var i = 0; i < jobs.length; i++) {
 
-        // FIX ADDED: counter logic
+// counter logic that actually works
         if (jobs[i].status === "Applied") {
             countApplied++; }
         else if (jobs[i].status === "Assessment") {
@@ -116,7 +116,7 @@ if (tableBody) {
         row.appendChild(details);
         tableBody.appendChild(row);
     }
-    // FIX ADDED: actually display the counters
+// actually display the counters
     document.getElementById("count-applied").textContent = countApplied;
     document.getElementById("count-assessment").textContent = countAssessment;
     document.getElementById("count-interview").textContent = countInterview;
