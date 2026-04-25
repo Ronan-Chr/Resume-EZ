@@ -197,3 +197,24 @@ if (detailsBody) {
         detailsBody.appendChild(row);
     }
 }
+// Gathers a quote displayed on the success api from zen quotes
+function loadQuote() {
+    fetch("https://dummyjson.com/quotes/random")
+    .then(response => response.json())
+    .then(data => {
+        var quoteElement = document.getElementById("quote");
+        if (quoteElement) {
+            quoteElement.textContent = data.quote;
+        }
+    })
+    .catch(() => {
+        var quoteElement = document.getElementById("quote");
+        if (quoteElement) {
+            quoteElement.textContent = "Stay focused and keep going.";
+        }
+    });
+}
+// load first quote
+loadQuote();
+// change every 30 seconds
+setInterval(loadQuote, 3000);

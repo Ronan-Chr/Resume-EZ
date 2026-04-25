@@ -1,6 +1,7 @@
 footer { 
     background-color: lightgrey;
-    font-size:  1;
+    font-size:  14px;
+    margin-top: auto;
 }
 
 .nav-link-custom {
